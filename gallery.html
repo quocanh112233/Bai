@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thư viện ảnh - Du lịch Việt Nam</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; color:#333; }
+    header { background:#008CBA; color:#fff; padding:15px; text-align:center; }
+    header nav a { color:white; margin:0 10px; text-decoration:none; font-weight:bold; }
+    header nav a.active { text-decoration: underline; }
+
+    .container { max-width:1200px; margin:30px auto; padding:0 15px; }
+    h2 { text-align:center; margin-bottom:25px; color:#008CBA; }
+
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
+
+    .gallery-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+    .gallery-card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
+    .gallery-card img { width:100%; height:200px; object-fit:cover; }
+    .gallery-info { padding:15px; text-align:center; }
+    .gallery-info h3 { margin:10px 0 5px; color:#008CBA; }
+    .gallery-info p { font-size:14px; color:#555; margin-bottom:10px; line-height:1.5; }
+    .rating { color:#FFD700; margin-bottom:10px; font-size:16px; }
+    .gallery-info button { background:#008CBA; color:#fff; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; transition:0.3s; }
+    .gallery-info button:hover { background:#005f73; }
+
+    /* MODAL */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
+    .modal-content { background:#fff; border-radius:12px; width:90%; max-width:600px; padding:20px; position:relative; text-align:left; animation:popupScale 0.4s ease; max-height:90vh; overflow-y:auto; }
+    .modal-content h3 { margin-top:0; color:#008CBA; }
+    .modal-content h4 { margin:10px 0 5px; color:#333; }
+    .modal-content p { margin:5px 0; }
+    .modal-content ul { margin:5px 0 15px 20px; padding:0; }
+    .modal-content li { margin-bottom:5px; }
+    .close-modal { position:absolute; top:10px; right:10px; background:#ff4444; color:#fff; border:none; border-radius:50%; width:28px; height:28px; font-size:18px; cursor:pointer; }
+    @keyframes popupScale { from{transform:scale(0.7);opacity:0;} to{transform:scale(1);opacity:1;} }
+
+    footer { background:#222; color:#eee; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <h1>Du Lịch Việt Nam</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="about.html">Giới thiệu</a>
+      <a href="destinations.html">Điểm đến</a>
+      <a href="gallery.html" class="active">Tour</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<section class="container gallery">
+    <!-- Ví dụ Hạ Long -->
+    <div class="gallery-card" data-name="Hạ Long">
+      <img src="2.jpg" alt="Hạ Long">
+      <div class="gallery-info">
+        <h3>Hạ Long</h3>
+        <p>Kỳ quan thiên nhiên thế giới với hàng ngàn đảo đá vôi tuyệt đẹp.</p>
+        <div class="rating">★★★★★</div>
+        <button onclick="openModal('halong')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Các gallery-card khác giữ nguyên, thêm data-name tương ứng -->
+  </div>
+</section>
+
+
+    <!-- Hạ Long -->
+    <div class="gallery-card">
+      <img src="2.jpg" alt="Hạ Long">
+      <div class="gallery-info">
+        <h3>Hạ Long</h3>
+        <p>Kỳ quan thiên nhiên thế giới với hàng ngàn đảo đá vôi tuyệt đẹp.</p>
+        <div class="rating">★★★★★</div>
+        <button onclick="openModal('halong')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Đà Nẵng -->
+    <div class="gallery-card">
+      <img src="3.jpg" alt="Đà Nẵng">
+      <div class="gallery-info">
+        <h3>Đà Nẵng</h3>
+        <p>Thành phố biển xinh đẹp, kết hợp hiện đại và thiên nhiên.</p>
+        <div class="rating">★★★★☆</div>
+        <button onclick="openModal('danang')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Huế -->
+    <div class="gallery-card">
+      <img src="4.jpg" alt="Huế">
+      <div class="gallery-info">
+        <h3>Huế</h3>
+        <p>Thành phố cổ kính, lưu giữ nhiều di tích lịch sử và ẩm thực đặc sắc.</p>
+        <div class="rating">★★★★★</div>
+        <button onclick="openModal('hue')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Sapa -->
+    <div class="gallery-card">
+      <img src="5.jpg" alt="Sapa">
+      <div class="gallery-info">
+        <h3>Sapa</h3>
+        <p>Núi non hùng vĩ, ruộng bậc thang, trải nghiệm văn hóa dân tộc.</p>
+        <div class="rating">★★★★★</div>
+        <button onclick="openModal('sapa')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Phú Quốc -->
+    <div class="gallery-card">
+      <img src="1.jpg" alt="Phú Quốc">
+      <div class="gallery-info">
+        <h3>Phú Quốc</h3>
+        <p>Đảo ngọc với biển xanh cát trắng và các resort sang trọng.</p>
+        <div class="rating">★★★★★</div>
+        <button onclick="openModal('phuquoc')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Hội An -->
+    <div class="gallery-card">
+      <img src="3.jpg" alt="Hội An">
+      <div class="gallery-info">
+        <h3>Hội An</h3>
+        <p>Phố cổ yên bình, kiến trúc truyền thống và ẩm thực đặc sắc.</p>
+        <div class="rating">★★★★☆</div>
+        <button onclick="openModal('hoian')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Nha Trang -->
+    <div class="gallery-card">
+      <img src="2.jpg" alt="Nha Trang">
+      <div class="gallery-info">
+        <h3>Nha Trang</h3>
+        <p>Thành phố biển nổi tiếng với bãi biển dài và đảo xinh đẹp.</p>
+        <div class="rating">★★★★☆</div>
+        <button onclick="openModal('nhatrang')">Xem chi tiết</button>
+      </div>
+    </div>
+
+    <!-- Mũi Né -->
+    <div class="gallery-card">
+      <img src="4.jpg" alt="Mũi Né">
+      <div class="gallery-info">
+        <h3>Mũi Né</h3>
+        <p>Biển đẹp, cồn cát vàng và làng chài truyền thống thú vị.</p>
+        <div class="rating">★★★★☆</div>
+        <button onclick="openModal('muine')">Xem chi tiết</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL CHI TIẾT -->
+<div class="modal" id="detailModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal()">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Du Lịch Việt Nam | Liên hệ: 0123 456 789 | contact@dulichvietnam.vn</p>
+</footer>
+
+<script>
+const detailsData = {
+  halong: {
+    title: "Hạ Long",
+    description: "Kỳ quan thiên nhiên thế giới với hàng ngàn đảo đá vôi tuyệt đẹp.",
+    itinerary: [
+      "08:00 - 09:00: Di chuyển từ khách sạn đến cảng Tuần Châu (xe bus).",
+      "09:00 - 12:00: Du thuyền tham quan các đảo và hang động.",
+      "12:00 - 13:00: Ăn trưa trên du thuyền.",
+      "13:00 - 16:00: Khám phá vịnh Bái Tử Long, chèo kayak.",
+      "16:00 - 18:00: Trở về khách sạn."
+    ],
+    transport: "Xe bus, du thuyền, kayak",
+    highlights: ["Ngắm vịnh Hạ Long", "Khám phá hang Sửng Sốt", "Chèo kayak"]
+  },
+  danang: {
+    title: "Đà Nẵng",
+    description: "Thành phố biển xinh đẹp, kết hợp hiện đại và thiên nhiên.",
+    itinerary: [
+      "07:00 - 09:00: Tham quan cầu Rồng và cầu Sông Hàn (xe máy/xe bus).",
+      "09:00 - 12:00: Tắm biển Mỹ Khê và tham quan Bảo tàng Chăm.",
+      "12:00 - 13:00: Ăn trưa tại nhà hàng địa phương.",
+      "13:00 - 17:00: Tham quan Bà Nà Hills, cáp treo và Sun World.",
+      "17:00 - 19:00: Trở về khách sạn nghỉ ngơi."
+    ],
+    transport: "Xe máy, taxi, cáp treo",
+    highlights: ["Cầu Rồng, cầu Sông Hàn", "Tắm biển Mỹ Khê", "Bà Nà Hills"]
+  },
+  hue: {
+    title: "Huế",
+    description: "Thành phố cổ kính, lưu giữ nhiều di tích lịch sử và ẩm thực đặc sắc.",
+    itinerary: [
+      "08:00 - 09:00: Tham quan Đại Nội Huế.",
+      "09:00 - 12:00: Tham quan lăng Khải Định và lăng Tự Đức.",
+      "12:00 - 13:00: Ăn trưa với đặc sản Huế.",
+      "13:00 - 16:00: Tham quan chùa Thiên Mụ và sông Hương.",
+      "16:00 - 18:00: Dạo phố cổ, thưởng thức ẩm thực vỉa hè."
+    ],
+    transport: "Xe máy, taxi, thuyền trên sông Hương",
+    highlights: ["Đại Nội Huế", "Lăng Khải Định", "Chùa Thiên Mụ"]
+  },
+  sapa: {
+    title: "Sapa",
+    description: "Núi non hùng vĩ, ruộng bậc thang, trải nghiệm văn hóa dân tộc.",
+    itinerary: [
+      "05:00 - 08:00: Di chuyển đến Sapa từ Hà Nội (xe bus giường nằm).",
+      "08:00 - 12:00: Tham quan bản Cát Cát, khám phá ruộng bậc thang.",
+      "12:00 - 13:00: Ăn trưa tại bản địa "
+      ,
+      "13:00 - 16:00: Leo núi Fansipan hoặc đi cáp treo.",
+      "16:00 - 18:00: Tham quan chợ Sapa, mua quà lưu niệm."
+    ],
+    transport: "Xe bus, đi bộ, cáp treo",
+    highlights: ["Ruộng bậc thang", "Bản Cát Cát", "Fansipan"]
+  },
+  phuquoc: {
+    title: "Phú Quốc",
+    description: "Đảo ngọc với biển xanh cát trắng và các resort sang trọng.",
+    itinerary: [
+      "08:00 - 09:00: Di chuyển đến bãi Sao.",
+      "09:00 - 12:00: Tắm biển, tham gia các trò chơi nước.",
+      "12:00 - 13:00: Ăn trưa tại resort.",
+      "13:00 - 16:00: Tham quan vườn quốc gia Phú Quốc.",
+      "16:00 - 18:00: Thưởng thức hải sản tại chợ đêm Dinh Cậu."
+    ],
+    transport: "Taxi, xe máy, tàu tham quan đảo",
+    highlights: ["Bãi Sao", "Vườn quốc gia", "Chợ đêm Dinh Cậu"]
+  },
+  hoian: {
+    title: "Hội An",
+    description: "Phố cổ yên bình, kiến trúc truyền thống và ẩm thực đặc sắc.",
+    itinerary: [
+      "08:00 - 10:00: Tham quan phố cổ, chùa Cầu.",
+      "10:00 - 12:00: Tham quan các cửa hàng thủ công mỹ nghệ.",
+      "12:00 - 13:00: Ăn trưa với cao lầu, bánh mì Hội An.",
+      "13:00 - 16:00: Tham quan làng gốm Thanh Hà, trải nghiệm làm gốm.",
+      "16:00 - 18:00: Đi thuyền trên sông Hoài, thưởng thức không gian đèn lồng."
+    ],
+    transport: "Xe đạp, đi bộ, thuyền",
+    highlights: ["Phố cổ Hội An", "Chùa Cầu", "Làng gốm Thanh Hà"]
+  },
+  nhatrang: {
+    title: "Nha Trang",
+    description: "Thành phố biển nổi tiếng với bãi biển dài và đảo xinh đẹp.",
+    itinerary: [
+      "08:00 - 09:00: Tham quan bãi biển Trần Phú.",
+      "09:00 - 12:00: Tham quan Vinpearl Land bằng cáp treo.",
+      "12:00 - 13:00: Ăn trưa tại nhà hàng ven biển.",
+      "13:00 - 16:00: Tham quan Tháp Chàm Po Nagar và chùa Long Sơn.",
+      "16:00 - 18:00: Thưởng thức hải sản tại chợ đêm Nha Trang."
+    ],
+    transport: "Xe máy, taxi, cáp treo",
+    highlights: ["Bãi biển Trần Phú", "Vinpearl Land", "Tháp Chàm Po Nagar"]
+  },
+  muine: {
+    title: "Mũi Né",
+    description: "Biển đẹp, cồn cát vàng và làng chài truyền thống thú vị.",
+    itinerary: [
+      "08:00 - 10:00: Tham quan Đồi Cát Vàng, chụp hình.",
+      "10:00 - 12:00: Tham quan Làng Chài Mũi Né, xem hoạt động đánh bắt cá.",
+      "12:00 - 13:00: Ăn trưa với hải sản tươi sống.",
+      "13:00 - 16:00: Tham quan Suối Tiên, tắm nước suối tự nhiên.",
+      "16:00 - 18:00: Thư giãn trên bãi biển Mũi Né."
+    ],
+    transport: "Xe máy, xe đạp, taxi",
+    highlights: ["Đồi Cát Vàng", "Làng Chài Mũi Né", "Suối Tiên"]
+  }
+};
+
+function openModal(location) {
+  const data = detailsData[location];
+  if (!data) return;
+
+  let html = `<h3>${data.title}</h3>`;
+  html += `<p>${data.description}</p>`;
+  html += `<h4>Lịch trình:</h4><ul>`;
+  data.itinerary.forEach(item => {
+    html += `<li>${item}</li>`;
+  });
+  html += `</ul>`;
+  html += `<p><strong>Phương tiện:</strong> ${data.transport}</p>`;
+  html += `<p><strong>Điểm nổi bật:</strong> ${data.highlights.join(', ')}</p>`;
+
+  document.getElementById('modalBody').innerHTML = html;
+  document.getElementById('detailModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('detailModal').style.display = 'none';
+}
+</script>
+
+<script>
+  // --- Tìm kiếm ---
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', function() {
+    const filter = searchInput.value.toLowerCase();
+    const cards = document.querySelectorAll('#galleryGrid .gallery-card');
+
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      if (name.includes(filter)) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Điểm đến - Du Lịch Việt Nam</title>
+  <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <h1>Du Lịch Việt Nam</h1>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="about.html">Giới thiệu</a>
+      <a href="destinations.html" class="active">Điểm đến</a>
+      <a href="gallery.html">Tour</a>
+      <a href="contact.html">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- BANNER QUẢNG CÁO -->
+<section class="ad-slider">
+  <div class="ad-slide">
+    <div class="ad-item">🎉 Khuyến mãi tour Hạ Long 20%!</div>
+    <div class="ad-item">✈️ Tour Châu Âu giá ưu đãi!</div>
+    <div class="ad-item">🏖️ Combo nghỉ dưỡng Đà Nẵng hấp dẫn!</div>
+    <div class="ad-item">🌄 Sapa mùa lúa chín - book ngay!</div>
+  </div>
+</section>
+
+<!-- ĐIỂM ĐẾN NỔI BẬT -->
+<section class="container">
+  <h2>Điểm đến nổi bật</h2>
+  <div class="grid-4">
+    <div class="card">
+      <img src="2.jpg" alt="Hạ Long">
+      <button onclick="toggleDetails(this)">Tìm hiểu thêm</button>
+      <div class="details">
+        <p><strong>Hạ Long:</strong> Kỳ quan thiên nhiên thế giới với hàng ngàn đảo đá vôi tuyệt đẹp.</p>
+        <p><strong>Thời gian tham quan:</strong> 6:00 - 18:00</p>
+        <p><strong>Hoạt động nổi bật:</strong> Du thuyền, khám phá hang động, chèo thuyền kayak.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="3.jpg" alt="Đà Nẵng">
+      <button onclick="toggleDetails(this)">Tìm hiểu thêm</button>
+      <div class="details">
+        <p><strong>Đà Nẵng:</strong> Thành phố biển xinh đẹp, kết hợp hiện đại và thiên nhiên.</p>
+        <p><strong>Thời gian tham quan:</strong> 7:00 - 22:00</p>
+        <p><strong>Hoạt động nổi bật:</strong> Tắm biển Mỹ Khê, cầu Rồng, Bà Nà Hills.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="4.jpg" alt="Hội An">
+      <button onclick="toggleDetails(this)">Tìm hiểu thêm</button>
+      <div class="details">
+        <p><strong>Hội An:</strong> Phố cổ yên bình, lưu giữ kiến trúc truyền thống và văn hóa đặc sắc.</p>
+        <p><strong>Thời gian tham quan:</strong> 8:00 - 21:00</p>
+        <p><strong>Hoạt động nổi bật:</strong> Tham quan phố cổ, thưởng thức ẩm thực địa phương, đi thuyền sông Hoài.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="5.jpg" alt="Sapa">
+      <button onclick="toggleDetails(this)">Tìm hiểu thêm</button>
+      <div class="details">
+        <p><strong>Sapa:</strong> Núi non hùng vĩ, khí hậu mát mẻ, nổi tiếng với ruộng bậc thang.</p>
+        <p><strong>Thời gian tham quan:</strong> 5:00 - 19:00</p>
+        <p><strong>Hoạt động nổi bật:</strong> Trekking bản làng, trải nghiệm văn hóa dân tộc, chinh phục Fansipan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOUR GỢI Ý -->
+<section class="container">
+  <h2>Tour gợi ý cho bạn</h2>
+  <div class="suggested-tours">
+    <div class="tour-card">
+      <img src="4.jpg" alt="Tour Huế">
+      <h4>Tour Huế 2 ngày 1 đêm</h4>
+      <p>Khám phá cố đô Huế với các di tích lịch sử và ẩm thực đặc sắc.</p>
+      <button>Đặt tour</button>
+    </div>
+    <div class="tour-card">
+      <img src="5.jpg" alt="Tour Phú Quốc">
+      <h4>Tour Phú Quốc 3 ngày 2 đêm</h4>
+      <p>Nghỉ dưỡng tại đảo ngọc Phú Quốc với biển xanh cát trắng.</p>
+      <button>Đặt tour</button>
+    </div>
+    <div class="tour-card">
+      <img src="3.jpg" alt="Tour Nha Trang">
+      <h4>Tour Nha Trang 2 ngày 1 đêm</h4>
+      <p>Trải nghiệm thành phố biển Nha Trang, VinWonders và lặn san hô.</p>
+      <button>Đặt tour</button>
+    </div>
+  </div>
+</section>
+
+<!-- POPUP KHuyến Mãi -->
+<div class="promo-popup" id="promoPopup">
+  <div class="promo-content">
+    <button class="close" onclick="closePopup()">×</button>
+    <div class="promo-header">
+      <i class="fas fa-gift"></i>
+      <h2>🎉 Khuyến mãi đặc biệt!</h2>
+    </div>
+    <p>Đặt tour Hạ Long trong tuần này, giảm ngay <strong>20%</strong>!</p>
+    <button class="btn-book" onclick="closePopup()">Đặt ngay</button>
+  </div>
+</div>
+<!-- ĐÁNH GIÁ KHÁCH HÀNG -->
+<section class="container">
+  <h2>Đánh giá khách hàng</h2>
+  <div class="reviews">
+    <div class="review">
+      <strong>Nguyễn Văn An </strong> 
+      <span class="rating">★★★★★</span>
+      <p>Tour Hạ Long thật tuyệt vời! Hướng dẫn viên nhiệt tình, cảnh quan tuyệt đẹp.</p>
+    </div>
+    <div class="review">
+      <strong>Trần Thị Bảo</strong> 
+      <span class="rating">★★★★☆</span>
+      <p>Đà Nẵng quá đẹp, khách sạn và dịch vụ đều tốt. Chỉ hơi đông khách vào mùa cao điểm.</p>
+    </div>
+    <div class="review">
+      <strong>Phạm Văn Châu</strong> 
+      <span class="rating">★★★★★</span>
+      <p>Hội An mang lại cảm giác yên bình, ẩm thực phong phú và giá cả hợp lý.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Du Lịch Việt Nam | <a href="#">Chính sách bảo mật</a> | <a href="#">Điều khoản sử dụng</a></p>
+  <p>Liên hệ: <i class="fas fa-phone"></i> 0123 456 789 | <i class="fas fa-envelope"></i> contact@dulichvietnam.vn</p>
+  <p>Kết nối: 
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+  </p>
+</footer>
+
+<script>
+  // Toggle chi tiết điểm đến
+  function toggleDetails(button) {
+    const details = button.nextElementSibling;
+    details.classList.toggle('active');
+    button.textContent = details.classList.contains('active') ? 'Thu gọn' : 'Tìm hiểu thêm';
+  }
+
+  // Slider quảng cáo
+  const slide = document.querySelector('.ad-slide');
+  let index = 0;
+  setInterval(() => {
+    index++;
+    if (index > 3) index = 0;
+    slide.style.transform = `translateX(-${index * 100}%)`;
+  }, 3000);
+
+  // Popup khuyến mãi
+  window.onload = function() {
+    setTimeout(() => { document.getElementById('promoPopup').style.display = 'flex'; }, 2000);
+  }
+
+  function closePopup() {
+    document.getElementById('promoPopup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
